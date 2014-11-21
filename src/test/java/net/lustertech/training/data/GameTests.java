@@ -1,5 +1,6 @@
 package net.lustertech.training.data;
 
+import net.lustertech.training.data.domains.Player;
 import net.lustertech.training.data.repositories.PlayerRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +34,8 @@ public class GameTests {
          * public interface PlayerRepository extends CrudRepository<Player, Integer> {...}
          * 2. 使用 repository.findAll() 取得資料
          */
+
+        Iterable<Player> players = playerRepository.findAll();
 
         assertThat(playerRepository, notNullValue());
 
