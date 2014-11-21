@@ -103,8 +103,6 @@ public class GameTests {
     @Test
     public void pagingPlayers() {
 
-        // TODO 任務：將玩家每兩筆分一頁，並印出每一頁的資料
-
         Page<Player> page;
         Pageable pageable = new PageRequest(0, 2);
 
@@ -117,6 +115,18 @@ public class GameTests {
 
         assertThat(page.getTotalPages(), is(2));
         assertThat((int) page.getTotalElements(), is(3));
+    }
 
+    @Test
+    public void findByNickname() {
+
+        // TODO 根據暱稱搜尋使用者
+        /*
+         * 任務：搜尋叫'華特'的使用者。
+         *
+         * Hints：
+         * 1. 繼承 JpaRepository
+         * 2. 加入 Query Method
+         */
     }
 }
