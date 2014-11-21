@@ -7,6 +7,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -86,15 +89,6 @@ public class GameTests {
     @Test
     public void orderPlayersByIdDesc() {
 
-        // TODO 將玩家依 ID 降冪進行排序
-        /*
-         * 任務：完成降冪排序，並測試結果是否為正確。
-         *
-         * Hints：
-         * 1. Repository 繼承 PagingAndSortingRepository
-         * 2. 使用 repository.findAll(Sort sort) 取得清單
-         */
-
         Iterable<Player> players = playerRepository.findAll(new Sort(Sort.Direction.DESC, "id"));
 
         Integer id = null;
@@ -104,5 +98,11 @@ public class GameTests {
             if (id != null) assertThat(player.getId(), lessThan(id));
             id = player.getId();
         }
+    }
+
+    @Test
+    public void pagingPlayers() {
+
+        // TODO 任務：將玩家每兩筆分一頁，並印出每一頁的資料
     }
 }
