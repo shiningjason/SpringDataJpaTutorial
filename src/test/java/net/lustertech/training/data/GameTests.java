@@ -9,9 +9,6 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @SpringApplicationConfiguration(classes = ApplicationConfig.class)
@@ -36,8 +33,7 @@ public class GameTests {
          */
 
         Iterable<Player> players = playerRepository.findAll();
-
-        assertThat(playerRepository, notNullValue());
+        for (Player player : players) System.out.println(player);
 
         System.out.println("＝＝＝＝＝＝＝＝＝＝");
     }
