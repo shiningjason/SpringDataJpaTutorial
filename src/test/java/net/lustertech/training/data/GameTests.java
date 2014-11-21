@@ -35,11 +35,8 @@ public class GameTests {
         assertThat(players, Matchers.<Player>iterableWithSize(3));
     }
 
-    // TODO 完成下列的測試案例
-
     @Test
     public void findPlayer() {
-        /* 任務一：取得 ID = 1 的使用者，並檢測玩家名稱是否為 'Jason'。 */
 
         Player player = playerRepository.findOne(1);
         System.out.println(player);
@@ -50,7 +47,6 @@ public class GameTests {
 
     @Test
     public void createPlayer() {
-        /* 任務二：儲存一筆新的使用者，並在重新取得玩家清單後，檢測數量是否加一。 */
 
         Player andy = new Player("Andy", "123", "安迪");
         playerRepository.save(andy);
@@ -63,7 +59,6 @@ public class GameTests {
 
     @Test
     public void updatePlayer() {
-        /* 任務三：修改使用者 ID 為 1 的使用者名稱，儲存並重新取得該玩家，檢測名稱是否改變。 */
 
         String newNickname = "小甜甜";
 
@@ -79,7 +74,6 @@ public class GameTests {
 
     @Test
     public void deletePlayer() {
-        /* 任務四：刪除 ID 為 1 的使用者，並在重新取得玩家清單後，檢測數量是否減一。 */
 
         playerRepository.delete(1);
 
@@ -87,5 +81,18 @@ public class GameTests {
         for (Player player : players) System.out.println(player);
 
         assertThat(players, Matchers.<Player>iterableWithSize(2));
+    }
+
+    @Test
+    public void orderPlayersByIdDesc() {
+
+        // TODO 將玩家依 ID 降冪進行排序
+        /*
+         * 任務：完成降冪排序，並測試結果是否為正確。
+         *
+         * Hints：
+         * 1. Repository 繼承 PagingAndSortingRepository
+         * 2. 使用 repository.findAll(Sort sort) 取得清單
+         */
     }
 }
