@@ -1,7 +1,9 @@
 package net.lustertech.training.data;
 
+import net.lustertech.training.data.repositories.PlayerRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @SpringApplicationConfiguration(classes = ApplicationConfig.class)
 public class GameTests {
+
+    @Autowired
+    private PlayerRepository playerRepository;
 
     @Test
     public void getAllPlayers() {
