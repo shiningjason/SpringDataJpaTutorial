@@ -10,6 +10,8 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -38,6 +40,12 @@ public class GameTests {
     @Test
     public void findPlayer() {
         /* 任務一：取得 ID = 1 的使用者，並檢測玩家名稱是否為 'Jason'。 */
+
+        Player player = playerRepository.findOne(1);
+        System.out.println(player);
+
+        assertThat(player, notNullValue());
+        assertThat(player.getUsername(), is("Jason"));
     }
 
     @Test

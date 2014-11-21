@@ -18,6 +18,10 @@ public class Player {
 
     private String nickname;
 
+    public String getUsername() {
+        return username;
+    }
+
     @Override
     public String toString() {
         return "Player{" +
