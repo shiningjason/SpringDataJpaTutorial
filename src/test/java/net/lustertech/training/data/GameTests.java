@@ -80,5 +80,12 @@ public class GameTests {
     @Test
     public void deletePlayer() {
         /* 任務四：刪除 ID 為 1 的使用者，並在重新取得玩家清單後，檢測數量是否減一。 */
+
+        playerRepository.delete(1);
+
+        Iterable<Player> players = playerRepository.findAll();
+        for (Player player : players) System.out.println(player);
+
+        assertThat(players, Matchers.<Player>iterableWithSize(2));
     }
 }
