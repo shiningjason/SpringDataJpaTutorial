@@ -120,13 +120,9 @@ public class GameTests {
     @Test
     public void findByNickname() {
 
-        // TODO 根據暱稱搜尋使用者
-        /*
-         * 任務：搜尋叫'華特'的使用者。
-         *
-         * Hints：
-         * 1. 繼承 JpaRepository
-         * 2. 加入 Query Method
-         */
+        Player player = playerRepository.findByNickname("華特");
+        System.out.println(player);
+
+        assertThat(player, notNullValue());
     }
 }
