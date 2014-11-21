@@ -51,6 +51,14 @@ public class GameTests {
     @Test
     public void createPlayer() {
         /* 任務二：儲存一筆新的使用者，並在重新取得玩家清單後，檢測數量是否加一。 */
+
+        Player andy = new Player("Andy", "123", "安迪");
+        playerRepository.save(andy);
+
+        Iterable<Player> players = playerRepository.findAll();
+        for (Player player : players) System.out.println(player);
+
+        assertThat(players, Matchers.<Player>iterableWithSize(4));
     }
 
     @Test
