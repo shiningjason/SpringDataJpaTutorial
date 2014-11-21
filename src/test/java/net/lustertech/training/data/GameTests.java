@@ -7,11 +7,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -94,5 +94,15 @@ public class GameTests {
          * 1. Repository 繼承 PagingAndSortingRepository
          * 2. 使用 repository.findAll(Sort sort) 取得清單
          */
+
+        Iterable<Player> players = playerRepository.findAll(new Sort(Sort.Direction.DESC, "id"));
+
+        Integer id = null;
+        for (Player player : players) {
+            System.out.println(player);
+
+            if (id != null) assertThat(player.getId(), lessThan(id));
+            id = player.getId();
+        }
     }
 }
