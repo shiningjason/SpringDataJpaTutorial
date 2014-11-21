@@ -8,6 +8,9 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @SpringApplicationConfiguration(classes = ApplicationConfig.class)
@@ -32,6 +35,7 @@ public class GameTests {
          * 2. 建立 Player Repository
          * public interface PlayerRepository extends Repository<Player, Integer> {...}
          */
+        assertThat(playerRepository, notNullValue());
 
         System.out.println("＝＝＝＝＝＝＝＝＝＝");
     }
