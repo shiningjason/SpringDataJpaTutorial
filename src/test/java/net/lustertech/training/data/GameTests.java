@@ -64,6 +64,17 @@ public class GameTests {
     @Test
     public void updatePlayer() {
         /* 任務三：修改使用者 ID 為 1 的使用者名稱，儲存並重新取得該玩家，檢測名稱是否改變。 */
+
+        String newNickname = "小甜甜";
+
+        Player player1 = playerRepository.findOne(1);
+        player1.setNickname(newNickname);
+        playerRepository.save(player1);
+
+        player1 = playerRepository.findOne(1);
+        System.out.println(player1);
+
+        assertThat(player1.getNickname(), is(newNickname));
     }
 
     @Test
