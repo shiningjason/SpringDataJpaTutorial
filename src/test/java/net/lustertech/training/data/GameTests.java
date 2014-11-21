@@ -104,5 +104,19 @@ public class GameTests {
     public void pagingPlayers() {
 
         // TODO 任務：將玩家每兩筆分一頁，並印出每一頁的資料
+
+        Page<Player> page;
+        Pageable pageable = new PageRequest(0, 2);
+
+        do {
+            page = playerRepository.findAll(pageable);
+            for (Player player : page.getContent()) System.out.println(player);
+
+            pageable = pageable.next();
+        } while (page.hasNext());
+
+        assertThat(page.getTotalPages(), is(2));
+        assertThat((int) page.getTotalElements(), is(3));
+
     }
 }
